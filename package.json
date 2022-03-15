@@ -1,0 +1,32 @@
+{
+  "name": "site_apartment_nodejs",
+  "version": "1.0.0",
+  "description": "Apartment manager",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "env-cmd -f ./configs/dev.env nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhnhanle1905/Site_Apartment_NodeJS.git"
+  },
+  "author": "Group6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhnhanle1905/Site_Apartment_NodeJS/issues"
+  },
+  "homepage": "https://github.com/anhnhanle1905/Site_Apartment_NodeJS#readme",
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongoose": "^6.2.6",
+    "router": "^1.3.6"
+  }
+}
