@@ -23,5 +23,5 @@ import example from "./src/routers/example.routers.js";
 app.use("/ok", example);
 //db connect()
 app.listen(port, () =>
-  console.log(`Resort managemnt app listening on port ${port}!`)
+  console.log(`Site apartment app listening on port ${port}!`)
 );
