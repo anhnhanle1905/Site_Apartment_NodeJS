@@ -1,10 +1,9 @@
-var cookieParser = require("cookie-parser");
+import cookieParser from "cookie-parser";
+import express from "express";
+import bodyParser from "body-parser";
 // const pool = require("./src/db/...");
 
 const port = process.env.PORT || 3000;
-
-const express = require("express");
-const bodyParser = require("body-parser");
 
 //xu ly form-data
 // const multer = require("multer");
@@ -18,9 +17,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(upload.array());
+import example from "./src/routers/example.routers.js";
 
-const example = require("./src/routers/example.js");
-
-app.use("/", example);
+// app.use("/example", MIDDLEWARE, example);
+app.use("/ok", example);
 //db connect()
-app.listen(port, () => console.log(`Apartment app listening on port ${port}!`));
+app.listen(port, () =>
+  console.log(`Resort managemnt app listening on port ${port}!`)
+);

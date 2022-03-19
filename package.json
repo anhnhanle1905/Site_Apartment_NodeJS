@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Apartment manager",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node index.js",
     "dev": "env-cmd -f ./configs/dev.env nodemon index.js"
