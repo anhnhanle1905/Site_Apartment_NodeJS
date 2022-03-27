@@ -1,5 +1,4 @@
 #nodejs
-#configs/
 node_modules/
-/yarn.lock/
+config/
 rest.http
