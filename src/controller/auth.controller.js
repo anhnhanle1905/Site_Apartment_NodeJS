@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
 
 export const registerUser = async (req, res) => {
   ///checking if email existed
@@ -28,5 +29,19 @@ export const registerUser = async (req, res) => {
       success: false,
       message: "Lỗi hệ thống.",
     });
+  }
+};
+
+export const loginUser = async (req, res) => {
+  try {
+    const user = await User.findByCredentials(
+      req.body.email,
+      req.body.password
+    );
+    const token = await user.getToken();
+    res.send({ user, token });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
   }
 };
