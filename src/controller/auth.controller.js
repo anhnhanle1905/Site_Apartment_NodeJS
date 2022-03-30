@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import User from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 export const registerUser = async (req, res) => {
   ///checking if email existed
@@ -32,6 +33,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
+//login user
 export const loginUser = async (req, res) => {
   try {
     const user = await User.findByCredentials(
@@ -40,6 +42,39 @@ export const loginUser = async (req, res) => {
     );
     const token = await user.getToken();
     res.send({ user, token });
+  } catch (err) {
+    console.log(err);
+    res.status(400).send(err);
+  }
+};
+
+//Change Password
+export const changePw = async (req, res) => {
+  const { email, currentpassword, newpassword, retypenewpassword } = req.body;
+  try {
+    const user = await User.findOne({ email: email });
+    const isMatchPassword = await bcrypt.compare(
+      currentpassword,
+      user.password
+    );
+
+    if (isMatchPassword) {
+      if (newpassword == retypenewpassword) {
+        user.password = newpassword;
+        const token = await user.getToken();
+        res.json({ success: true, user, token });
+      } else {
+        res.status(500).json({
+          success: false,
+          message: "Nhập sai mật khẩu.",
+        });
+      }
+    } else {
+      res.status(500).json({
+        success: false,
+        message: "Nhập sai mật khẩu hiện tại.",
+      });
+    }
   } catch (err) {
     console.log(err);
     res.status(400).send(err);
