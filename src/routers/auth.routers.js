@@ -5,8 +5,8 @@ import auth from "../middleware/auth.js";
 import {
   registerUser,
   loginUser,
-  changePw,
   logOut,
+  changePw,
 } from "../controller/auth.controller.js";
 
 router.post("/register", registerUser);
