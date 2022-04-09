@@ -52,7 +52,8 @@ export const logOut = async (req, res) => {
       return token.token != req.token;
     });
     await req.user.save();
-    res.send();
+    console.log("Log out success!");
+    res.send({ message: "Log out success!" });
   } catch (error) {
     res.status(500).send(error);
   }
