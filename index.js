@@ -25,12 +25,16 @@ import auth from "./src/routers/auth.routers.js";
 import blog from "./src/routers/blog.routers.js";
 import agents from "./src/routers/agent.routers.js";
 import imageGallerys from "./src/routers/imageGallery.routers.js";
+import sliders from "./src/routers/slider.routers.js";
+import icons from "./src/routers/icon.routers.js";
 
 // app.use("/example", MIDDLEWARE, example);
 app.use("/auth", auth);
 app.use("/blog", blog);
 app.use("/agents", agents);
 app.use("/imageGallery", imageGallerys);
+app.use("/slider", sliders);
+app.use("/icon", icons);
 
 //db connect()
 connectDB();
