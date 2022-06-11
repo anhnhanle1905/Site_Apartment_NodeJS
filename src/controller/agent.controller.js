@@ -1,23 +1,23 @@
-import Blog from "../models/blog.model.js";
+import Agent from "../models/agent.model.js";
 
 export const uploadData = async (req, res) => {
   ///checking if email existed
-  const { image, title, time, description } = req.body;
+  const { image, name, description } = req.body;
 
   try {
     // Create a new user
-    const newBlog = new Blog({
+    const newAgent = new Agent({
       image: image,
-      title: title,
-      time: time,
+      name: name,
+
       description: description,
     });
     ///Save User
-    await newBlog.save();
-    console.log(`Upload Blog Data Success with title is: ${title}`);
+    await newAgent.save();
+    console.log(`Upload Agents Data Success with name is: ${name}`);
     res.status(200).json({
       success: true,
-      message: `Upload Blog Data Success with title is: ${req.body.title}`,
+      message: `Upload Agents Data Success with name is: ${req.body.name}`,
     });
   } catch (error) {
     console.log(error);
@@ -28,11 +28,11 @@ export const uploadData = async (req, res) => {
   }
 };
 
-export const getBlogs = async (req, res) => {
+export const getAgents = async (req, res) => {
   try {
-    const blog = await Blog.find();
+    const agent = await Agent.find();
     res.json({
-      data: blog,
+      data: agent,
       message: "Get data success",
     });
   } catch (error) {
