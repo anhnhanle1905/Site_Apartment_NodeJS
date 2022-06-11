@@ -21,12 +21,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // app.use(upload.array());
-import example from "./src/routers/example.routers.js";
 import auth from "./src/routers/auth.routers.js";
+import blog from "./src/routers/blog.routers.js";
 
 // app.use("/example", MIDDLEWARE, example);
-app.use("/ok", example); //example
 app.use("/auth", auth);
+app.use("/blog", blog);
 
 //db connect()
 connectDB();
